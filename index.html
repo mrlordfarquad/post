@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+$(document).ready(function(){
+  $("button").click(function(){
+    $.get("https://jsonplaceholder.typicode.com/posts/1", function(data, status){
+      alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+    });
+  });
+
+  $("#postBtn").click(function(){
+    $.post("https://jsonplaceholder.typicode.com/posts",
+    {
+      title: 'foo',
+      body: 'bar',
+      userId: 1
+    },
+    function(data, status){
+      alert("Data: " + JSON.stringify(data) + "\nStatus: " + status);
+    });
+  });
+});
+</script>
+</head>
+<body>
+
+<button>Send an HTTP GET request</button>
+
+<button id="postBtn">Send an HTTP POST request</button>
+
+</body>
+</html>
